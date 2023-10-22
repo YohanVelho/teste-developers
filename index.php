@@ -34,6 +34,7 @@ $_METATAGS = Array(
     'keywords' => '',
 );
 
+$smarty = new Smarty();
 // ENGINE
 if(file_exists('engines/global.php')){
     include_once('engines/global.php');
@@ -51,7 +52,6 @@ $_TEMPLATE['URL_ENCODED'] = urlencode(urlencode(currentURL()));
 $_TEMPLATE['PAGE'] = $_PAGE;
 $_TEMPLATE['TITLE'] = (isset($TITLE))? $TITLE : $_TEMPLATE['TITLE'];
 $_TEMPLATE['METATAGS'] = (isset($_METATAGS))? $_METATAGS : false;
-$smarty = new Smarty();
 $smarty->template_dir = 'templates/';
 $smarty->compile_dir = 'templates/compiled/';
 $smarty->registerPlugin('modifier', 'seoText', 'generateSeoName');
