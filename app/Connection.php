@@ -1,18 +1,14 @@
 <?php 
 
+namespace App;
+
 class Connection {
-
-    protected $db;
-
-    public function __construct(\PDO $db) {
-        $this->db = $db;
-    }
 
     public static function getDb(){
         try {
             $connect = new \PDO(
-                'mysql:host=localhost;dbname=teste_developers;charset=utf8',
-                'root',
+                'mysql:host=192.168.10.201;dbname=teste_yohan;charset=utf8',
+                'desenvolvimento',
                 ""
             );
             return $connect;

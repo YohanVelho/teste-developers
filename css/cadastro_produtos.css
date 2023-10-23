@@ -16,6 +16,16 @@ body {
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 10px;
 	margin: 10px auto;
+}
+
+.caixaInput {
+    float: left;
+    padding: 5px;
+    font-family: Trebuchet MS;
+    font-size: 13px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    color: #474646;
 }

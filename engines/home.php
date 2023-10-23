@@ -9,6 +9,9 @@
  * há a possibilidade de criar um script global, qeu é incluído em todas as páginas: global .php
  * 
  */
+
+use App\Models\Products;
+
 $smarty = new Smarty();
 
 $_TEMPLATE['TITLE'] = 'Home';
@@ -26,4 +29,7 @@ $data = [
     ]
 ];
 
+$teste = new Products();
+
+print_r($teste->getProducts());
 $smarty->assign('data', $data);
