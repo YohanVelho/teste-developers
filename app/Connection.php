@@ -1,7 +1,5 @@
 <?php 
 
-namespace App;
-
 class Connection {
 
     protected $db;
@@ -9,7 +7,7 @@ class Connection {
     public function __construct(\PDO $db) {
         $this->db = $db;
     }
-    
+
     public static function getDb(){
         try {
             $connect = new \PDO(

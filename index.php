@@ -3,6 +3,7 @@ require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions.php');
 require_once(__DIR__.'/plugins/smarty/libs/Smarty.class.php');
 require_once(__DIR__.'/session.php');
+require_once(__DIR__.'/app/Connection.php');
 ini_set('register_globals', 0);
 ini_set('display_errors', DISPLAY_ERRORS);
 ini_set("log_errors", 1);
