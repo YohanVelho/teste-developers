@@ -3,12 +3,19 @@ body{
 	background:#eeeeee;
 }
 
-.products-table *{
-	width: 960px;
-	border: 1px solid black;
-	margin: auto 0;
+.products-table{
+	width: 53rem;
+	border: 2px solid black;
+	margin: 50px auto;
 }
 
-.div-products-list{
-	width: 100%;
+.products-table td{
+	border: 1px solid black;
+	margin: auto 0;
+	padding: 5px;
+}
+
+.products-table tr{
+	border: 1px solid black;
+	margin: auto 0;
 }
