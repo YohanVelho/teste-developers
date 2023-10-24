@@ -9,7 +9,7 @@ class Connection {
             $connect = new \PDO(
                 'mysql:host=192.168.10.201;dbname=teste_yohan;charset=utf8',
                 'desenvolvimento',
-                ""
+                "ellite"
             );
             return $connect;
         } catch (\PDOException $e) {

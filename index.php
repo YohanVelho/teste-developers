@@ -3,9 +3,9 @@ require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions.php');
 require_once(__DIR__.'/plugins/smarty/libs/Smarty.class.php');
 require_once(__DIR__.'/session.php');
-require_once(__DIR__.'/App/Connection.php');
-require_once(__DIR__.'/App/Models/AppModel.php');
-require_once(__DIR__.'/App/Models/Products.php');
+require_once(__DIR__.'/app/Connection.php');
+require_once(__DIR__.'/app/Models/AppModel.php');
+require_once(__DIR__.'/app/Models/Products.php');
 ini_set('register_globals', 0);
 ini_set('display_errors', DISPLAY_ERRORS);
 ini_set("log_errors", 1);
@@ -13,6 +13,7 @@ ini_set("error_log", "php-error.log");
 error_reporting(E_ALL);
 setlocale(LC_ALL, 'pt_BR');
 date_default_timezone_set('America/Sao_Paulo');
+error_reporting(~E_DEPRECATED);
 
 // TRATAMENTO DE URL AMIGÁVEL
 if(isset($_GET['friendlyUrl'])){

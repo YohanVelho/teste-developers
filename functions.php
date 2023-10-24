@@ -329,8 +329,8 @@ function getDatabaseTableTree($tablename, $tablename_id, $tablename_parentid, $s
 		$GLOBALS['getDatabaseTableTree']['Level'] = 0;
 	}
 	$database = $GLOBALS['database'];
-	$database -> startCondGroup();
-	$database -> addCond($tablename_parentid, $start_subid);
+	$database->startCondGroup();
+	$database->addCond($tablename_parentid, $start_subid);
 	if ($start_subid == 0 || $start_subid == '0') {$database -> addCond($tablename_parentid, 'NULL', 'IS', 'OR');
 	}
 	$database -> closeCondGroup();

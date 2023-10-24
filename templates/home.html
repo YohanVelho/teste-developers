@@ -7,17 +7,19 @@
       <table class="products-table">
         <thead>
           <tr>
+            <td>Código</td>
             <td>Nome</td>
             <td>Preço</td>
-            <td>Imagem</td>
+            <td>Editar</td>
           </tr>
         </thead>
-        {foreach $data as $key => $item}
+        {foreach $products as $key => $product}
         <tbody>
           <tr>
-            <td>{$item.nome}</td>
-            <td>{$item.preco}</td>
-            <td>{$item.imagem}</td>
+            <td>{$product.code}</td>
+            <td>{$product.name}</td>
+            <td>{$product.value}</td>
+            <td><a href="?friendlyUrl=cadastro_produtos?product_id={$product.id}">Editar</a></td>
           </tr>
         </tbody>
         {/foreach}

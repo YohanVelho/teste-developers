@@ -10,26 +10,16 @@
  * 
  */
 
+use App\Connection;
 use App\Models\Products;
 
 $smarty = new Smarty();
 
 $_TEMPLATE['TITLE'] = 'Home';
-$_TEMPLATE['DESCRIPTION'] = 'Insira aqui a descrição do seu site que vai na metatag description';
+$_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
-    'nomedametatag' => 'valor da metatag',
+    'nomedametatag' => '',
 );
 
 
-$data = [
-    [
-        'nome' => 'Produto 1',
-        'preco' => '1.000,00 R$',
-        'imagem' => 'Produto sem imagem'
-    ]
-];
-
-$teste = new Products();
-
-print_r($teste->getProducts());
-$smarty->assign('data', $data);
+$smarty->assign('products', $productsTable->getProducts());
