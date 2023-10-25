@@ -33,6 +33,34 @@ class AppModel {
         
         return $this->db->lastInsertId();
     }
+
+    public function updateQuery($table, $values, $wheres){
+		$data = [];
+		
+		$columns_equals = [];
+		
+		foreach($values as $column => $value){
+			$columns_equals[] = "$column = :$column";
+			$data[":$column"] = $value;
+		}
+		
+		$equals_wheres = [];
+		
+		foreach($wheres as $column => $value){
+			$equals_wheres[] = "$column = :{$column}_W";
+			$data[":{$column}_W"] = $value;
+		}
+		
+		$editar = $this->db->prepare('
+			UPDATE '.$table.' SET 
+				'.implode(',', $columns_equals).'
+			WHERE '.implode(' AND ', $equals_wheres).'
+		');
+		
+		$editar->execute($data);
+		
+		return $editar->rowCount();
+	}
 }
 
 ?>
