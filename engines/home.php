@@ -21,5 +21,12 @@ $_METATAGS = array(
     'nomedametatag' => '',
 );
 
+if(isset($_GET['excluir'])){
+    $id = $_GET['excluir'];
+
+    if($id){
+        $product = $productsTable->deleteQuery('products', ['id' => $id]);
+    }
+}
 
 $smarty->assign('products', $productsTable->getProducts());

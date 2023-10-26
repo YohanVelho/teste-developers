@@ -19,18 +19,15 @@ $product = [
 
 if(!empty($_POST)){
     $data = $_POST;
-    print_r($_POST);
 }
 if(!empty($_FILES)){
     $file = $_FILES;
 }
 
 if($data || $file){
-    if($data['id']){
-        $return = $productsTable->editProduct($pdo, $data, $file); 
-    }else{
-        $return = $productsTable->insertProduct($pdo, $data, $file); 
-    }
+
+    $return = $productsTable->insertEditProduct($data, $file); 
+
     if($return){
         //TODO: Mensagem de retorno
     }
@@ -44,12 +41,5 @@ if(isset($_GET['editar'])){
     }
 }
 
-if(isset($_GET['excluir'])){
-    $id = $_GET['excluir'];
-
-    if($id){
-        $product = $productsTable->deleteQuery('products', $id);
-    }
-}
 
 $smarty->assign('product', $product);

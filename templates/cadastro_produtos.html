@@ -6,6 +6,9 @@
 	{include 'Layouts/header.html'}
 
 	<div class="form-div">
+		{if isset($return_message)}
+		<h3>{$return_message}</h3>
+		{/if}
 		<form action="?friendlyUrl=cadastro_produtos" method="post" onsubmit="" enctype="multipart/form-data">
 			<div class="form-fields">
 				<input type="hidden" name="id" id="id" value="{$product.id}" />
@@ -18,9 +21,6 @@
 
 				<label for="value">Preço:</label>
 				<input type="number" id="value" name="value" value="{$product.value}" required />
-
-				<!-- <label for="imagem">Imagem do Produto:</label>
-        			<input type="file" id="imagem" name="imagem" class="caixaInput" > -->
 
 				<input type="submit" value="Salvar" />
 			</div>
