@@ -11,6 +11,7 @@
             <td>Nome</td>
             <td>Preço</td>
             <td>Editar</td>
+            <td>Excluir</td>
           </tr>
         </thead>
         {foreach $products as $key => $product}
@@ -19,7 +20,8 @@
             <td>{$product.code}</td>
             <td>{$product.name}</td>
             <td>{$product.value}</td>
-            <td><a href="?friendlyUrl=cadastro_produtos&product_id={$product.id}">Editar</a></td>
+            <td><a href="?friendlyUrl=cadastro_produtos&editar={$product.id}">Editar</a></td>
+            <td><a href="?friendlyUrl=cadastro_produtos&excluir={$product.id}">Editar</a></td>
           </tr>
         </tbody>
         {/foreach}

@@ -36,18 +36,20 @@ if($data || $file){
     }
 }
 
-if(isset($_GET['product_id'])){
-
-    $id = $_GET['product_id'];
+if(isset($_GET['editar'])){
+    $id = $_GET['editar'];
 
     if($id){
         $product = $productsTable->getProductById($id);
     }
 }
+
+if(isset($_GET['excluir'])){
+    $id = $_GET['excluir'];
+
+    if($id){
+        $product = $productsTable->deleteQuery('products', $id);
+    }
+}
+
 $smarty->assign('product', $product);
-
-// $form = new form();
-
-// $form->addField('teste', 'text');
-
-// $smarty->assign('form', $form);
