@@ -9,7 +9,7 @@
 		{if isset($return_message)}
 		<h3>{$return_message}</h3>
 		{/if}
-		<form action="?friendlyUrl=cadastro_produtos" method="post" onsubmit="" enctype="multipart/form-data">
+		<form action="?friendlyUrl=cadastro_produtos" method="post" onsubmit="validaForm()" enctype="multipart/form-data">
 			<div class="form-fields">
 				<input type="hidden" name="id" id="id" value="{$product.id}" />
 
