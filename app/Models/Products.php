@@ -11,7 +11,7 @@ class Products extends AppModel{
         return $this->db->query('SELECT * FROM products');
     }
     
-    public function insertEditProduct(array $data = [], array $files = []){
+    public function insertEditProduct(array $data = []){
 
         $data = [
             'id' => isset($data['id']) ? $data['id'] : null,
@@ -27,7 +27,6 @@ class Products extends AppModel{
         }else{
             return AppModel::insertQuery('products', $data, $this->db);
         }
-
     }
 
     public function getProductById($id){

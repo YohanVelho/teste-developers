@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{include 'Layouts/head.html'}
+
+<body>
+	{include 'Layouts/header.html'}
+
+	<div class="form-div">
+		{if isset($return_message)}
+		<h3>{$return_message}</h3>
+		{/if}
+		<form action="?friendlyUrl=cadastro_categorias" method="post" onsubmit="validaForm()" enctype="multipart/form-data">
+			<div class="form-fields">
+				<input type="hidden" name="id" id="id" value="{$category.id}" />
+
+				<label for="name">Nome:</label>
+				<input type="text" id="name" name="name" data-obrigatorio="1" value="{$category.name}" required />
+
+				<input type="submit" value="Salvar" />
+			</div>
+		</form>
+
+	</div>
+
+	{include 'Layouts/footer.html'}
+</body>
+
+</html>

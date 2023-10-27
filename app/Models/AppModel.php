@@ -6,7 +6,6 @@ use App\Connection;
 
 class AppModel
 {
-
     public $db;
 
     public function __construct()
@@ -65,9 +64,6 @@ class AppModel
         return $editar->rowCount();
     }
 
-    /*
-     * cria e executa uma query de delete
-     */
     public function deleteQuery($table, $wheres)
     {
         $values_equals = [];
