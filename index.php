@@ -6,6 +6,7 @@ require_once(__DIR__.'/session.php');
 require_once(__DIR__.'/app/Connection.php');
 require_once(__DIR__.'/app/Models/AppModel.php');
 require_once(__DIR__.'/app/Models/Products.php');
+require_once(__DIR__.'/app/Models/Categories.php');
 ini_set('register_globals', 0);
 ini_set('display_errors', DISPLAY_ERRORS);
 ini_set("log_errors", 1);

@@ -8,7 +8,7 @@
     {if isset($return_message)}
     <h3>{$return_message}</h3>
     {/if}
-    {if is_array($products) && count($products) > 0}
+    {if $countProducts}
     <table class="products-table">
       <thead>
         <tr>

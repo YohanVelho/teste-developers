@@ -19,7 +19,9 @@ $_METATAGS = Array(
  */
 
 use App\Connection;
+use App\Models\Categories;
 use App\Models\Products;
 
 $pdo = new Connection();
 $productsTable = new Products($pdo::getDb());
+$categoriesTable = new Categories($pdo::getDb());

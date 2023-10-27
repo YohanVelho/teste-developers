@@ -1,6 +1,6 @@
 <?php
 
-$_TEMPLATE['TITLE'] = 'Cadastro de produtos';
+$_TEMPLATE['TITLE'] = 'Cadastro de categorias';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
     'nomedametatag' => '',
@@ -8,7 +8,7 @@ $_METATAGS = array(
 
 $data = [];
 $file = [];
-$product = [
+$category = [
     'id' => 0,
     'code' => '',
     'name' => '',
@@ -24,7 +24,7 @@ if(!empty($_FILES)){
 
 if($data || $file){
 
-    $return = $productsTable->insertEditProduct($data, $file); 
+    $return = $categorysTable->insertEditCategory($data, $file); 
 
     if($return){
         //TODO: Mensagem de retorno
@@ -35,9 +35,9 @@ if(isset($_GET['editar'])){
     $id = $_GET['editar'];
 
     if($id){
-        $product = $productsTable->getProductById($id);
+        $category = $categorysTable->getCategoryById($id);
     }
 }
 
 
-$smarty->assign('product', $product);
+$smarty->assign('category', $category);
