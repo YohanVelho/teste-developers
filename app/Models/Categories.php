@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Connection;
 use App\Models\AppModel;
 
-class Categories extends AppModel {
+class Categories extends AppModel{
     
     public function getCategories(){
         return $this->db->query('SELECT * FROM categories');

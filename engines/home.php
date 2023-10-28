@@ -30,4 +30,3 @@ if(isset($_GET['excluir'])){
 }
 
 $smarty->assign('products', $productsTable->getProducts());
-$smarty->assign('countProducts', $productsTable->getProducts()->rowCount());

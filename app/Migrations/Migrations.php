@@ -18,7 +18,6 @@ class Migrations{
 
             $con->exec("CREATE TABLE IF NOT EXISTS categories (
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
-                `active` TINYINT(1) DEFAULT 1,
                 `name` VARCHAR(190) NULL,
                 `created` DATETIME NULL,
                 `modified` DATETIME NULL);
@@ -26,7 +25,6 @@ class Migrations{
 
             $con->exec("CREATE TABLE IF NOT EXISTS products (
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
-                `active` TINYINT(1) DEFAULT 1,
                 `code` VARCHAR(190) NULL,
                 `name` VARCHAR(190) NULL,
                 `price` DECIMAL(10,2) NULL,

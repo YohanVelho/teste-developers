@@ -1,5 +1,7 @@
 <?php
 
+use form\form;
+
 $_TEMPLATE['TITLE'] = 'Cadastro de produtos';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
