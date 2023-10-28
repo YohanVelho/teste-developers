@@ -4,27 +4,27 @@ namespace App\Migrations;
 
 class Migrations{
 
-    private function __construct() {
+    public function __construct() {
         $host = "localhost";
         $root = "root";
         $root_password = "";
-        $db = "teste_developers";
+        $db = "teste_developers_";
         
         try {
             $con = new \PDO("mysql:host=$host", $root, $root_password);
         
-            $con->exec("CREATE DATABASE IF NOT EXISTS `$db`;")
-                or die(print_r($con->errorInfo(), true));
+            $con->exec("CREATE DATABASE IF NOT EXISTS `$db`;
 
-            $con->exec("CREATE TABLE IF NOT EXISTS categories (
+            USE `$db`;
+
+            CREATE TABLE IF NOT EXISTS categories (
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                 `active` TINYINT(1) DEFAULT 1,
                 `name` VARCHAR(190) NULL,
                 `created` DATETIME NULL,
                 `modified` DATETIME NULL);
-            ");
 
-            $con->exec("CREATE TABLE IF NOT EXISTS products (
+            CREATE TABLE IF NOT EXISTS products (
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                 `active` TINYINT(1) DEFAULT 1,
                 `code` VARCHAR(190) NULL,
@@ -34,8 +34,8 @@ class Migrations{
                 `created` DATETIME NULL,
                 `modified` DATETIME NULL,
                 FOREIGN KEY (category_id) REFERENCES categories(id));
-            ");
-
+            ") or die(print_r($con->errorInfo(), true));
+            
         } catch (\PDOException $e) {
             die("DB ERROR: " . $e->getMessage());
         }
