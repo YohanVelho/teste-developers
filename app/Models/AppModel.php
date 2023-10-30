@@ -4,11 +4,11 @@ namespace App\Models;
 
 class AppModel
 {
-    public $db;
 
-    public function __construct($con)
+    public function __construct(
+        public $db
+    )
     {
-        $this->db = $con->getDb();
     }
 
     public function insertQuery($table, $values)
@@ -29,7 +29,11 @@ class AppModel
 
         $inserir->execute($values);
 
-        return $this->db->lastInsertId();
+        if($this->db->lastInsertId()){
+            return 'Cadastrado com sucesso!';
+        }else{
+            return 'Erro no cadastro!';
+        }
     }
 
     public function updateQuery($table, $values, $wheres)
@@ -58,7 +62,11 @@ class AppModel
 
         $editar->execute($data);
 
-        return $editar->rowCount();
+        if($editar->rowCount()){
+            return 'Editado com sucesso!';
+        }else{
+            return 'Erro ao editar!';
+        }
     }
 
     public function deleteQuery($table, $wheres)

@@ -1,7 +1,5 @@
 <?php
 
-use form\form;
-
 $_TEMPLATE['TITLE'] = 'Cadastro de produtos';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
@@ -9,9 +7,9 @@ $_METATAGS = array(
 );
 
 $data = [];
-$file = [];
 $product = [
     'id' => 0,
+    'active' => 0,
     'code' => '',
     'name' => '',
     'value' => 0,
@@ -20,16 +18,12 @@ $product = [
 if(!empty($_POST)){
     $data = $_POST;
 }
-if(!empty($_FILES)){
-    $file = $_FILES;
-}
 
-if($data || $file){
-
-    $return = $productsTable->insertEditProduct($data, $file); 
+if($data){
+    $return = $productsTable->insertEditProduct($data); 
 
     if($return){
-        //TODO: Mensagem de retorno
+        $smarty->assign('return_message', $return);
     }
 }
 
@@ -38,8 +32,9 @@ if(isset($_GET['editar'])){
 
     if($id){
         $product = $productsTable->getProductById($id);
+        $checked = $product['active'] === 1 ? 'checked' : '';
+        $smarty->assign('checked', $checked);
     }
 }
-
 
 $smarty->assign('product', $product);

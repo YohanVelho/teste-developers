@@ -4,11 +4,11 @@ namespace App\Migrations;
 
 use App\Connection;
 
-class Migrations extends Connection{
+class Migrations{
 
     public function __construct() {
-        
-        $data = $this->getDbInfo();
+        $con = new Connection();
+        $data = $con->getDbInfo();
 
         $host = $data['host'];
         $root = $data['root'];

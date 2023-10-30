@@ -7,7 +7,7 @@ use App\Models\AppModel;
 class Products extends AppModel{
     
     public function getProducts(){
-        return $this->db->query('SELECT * FROM products');
+        return $this->db->query('SELECT * FROM products')->fetchAll();
     }
     
     public function insertEditProduct(array $data = []){
