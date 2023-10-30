@@ -1,17 +1,32 @@
 <?php
 
 use App\Migrations\Migrations;
-
-require_once(__DIR__.'/app/Migrations/Migrations.php');
-$migration = new Migrations();
+use App\Connection;
+use App\Models\AppModel;
+use App\Models\Products;
 
 require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions.php');
 require_once(__DIR__.'/plugins/smarty/libs/Smarty.class.php');
 require_once(__DIR__.'/session.php');
+
+// conexão com o banco
 require_once(__DIR__.'/app/Connection.php');
+$pdo = new Connection();
+
+// migrations
+if($_SERVER['REQUEST_URI'] === '/migrate'){
+    require_once(__DIR__.'/app/Migrations/Migrations.php');
+    $migration = new Migrations();
+}
+
+//Models
 require_once(__DIR__.'/app/Models/AppModel.php');
+$appModel = new AppModel($pdo->getDb());
+
 require_once(__DIR__.'/app/Models/Products.php');
+$productsTable = new Products($pdo->getDb());
+
 ini_set('register_globals', 0);
 ini_set('display_errors', DISPLAY_ERRORS);
 ini_set("log_errors", 1);
@@ -19,7 +34,7 @@ ini_set("error_log", "php-error.log");
 error_reporting(E_ALL);
 setlocale(LC_ALL, 'pt_BR');
 date_default_timezone_set('America/Sao_Paulo');
-error_reporting(~E_DEPRECATED);
+// error_reporting(~E_DEPRECATED);
 
 // TRATAMENTO DE URL AMIGÁVEL
 if(isset($_GET['friendlyUrl'])){

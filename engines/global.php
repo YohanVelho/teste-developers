@@ -18,8 +18,3 @@ $_METATAGS = Array(
  * 
  */
 
-use App\Connection;
-use App\Models\Products;
-
-$pdo = new Connection();
-$productsTable = new Products($pdo::getDb());

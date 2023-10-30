@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-use App\Connection;
-
 class AppModel
 {
     public $db;
 
-    public function __construct()
+    public function __construct($con)
     {
-        $con = new Connection();
-        $this->db = $con::getDb();
+        $this->db = $con->getDb();
     }
 
     public function insertQuery($table, $values)

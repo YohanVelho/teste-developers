@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Connection;
 use App\Models\AppModel;
 
 class Products extends AppModel{
@@ -23,9 +22,9 @@ class Products extends AppModel{
         ];
 
         if($data['id']){
-            return AppModel::updateQuery('products', $data, $this->db);
+            return $this->updateQuery('products', $data, $this->db);
         }else{
-            return AppModel::insertQuery('products', $data, $this->db);
+            return $this->insertQuery('products', $data, $this->db);
         }
     }
 

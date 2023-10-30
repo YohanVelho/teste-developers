@@ -13,8 +13,6 @@
 use App\Connection;
 use App\Models\Products;
 
-$smarty = new Smarty();
-
 $_TEMPLATE['TITLE'] = 'Home';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(

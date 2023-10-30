@@ -2,14 +2,19 @@
 
 namespace App\Migrations;
 
-class Migrations{
+use App\Connection;
+
+class Migrations extends Connection{
 
     public function __construct() {
-        $host = "localhost";
-        $root = "root";
-        $root_password = "";
-        $db = "teste_developers_";
         
+        $data = $this->getDbInfo();
+
+        $host = $data['host'];
+        $root = $data['root'];
+        $root_password = $data['root_password'];
+        $db = $data['db'];
+
         try {
             $con = new \PDO("mysql:host=$host", $root, $root_password);
         
@@ -27,12 +32,12 @@ class Migrations{
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                 `code` VARCHAR(190) NULL,
                 `name` VARCHAR(190) NULL,
-                `price` DECIMAL(10,2) NULL,
+                `value` DECIMAL(10,2) NULL,
                 `category_id` BIGINT NULL,
                 `created` DATETIME NULL,
                 `modified` DATETIME NULL,
                 FOREIGN KEY (category_id) REFERENCES categories(id));
-            ") or die(print_r($con->errorInfo(), true));
+            ");
             
         } catch (\PDOException $e) {
             die("DB ERROR: " . $e->getMessage());
