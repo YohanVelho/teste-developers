@@ -59,7 +59,6 @@ class AppModel
 				' . implode(',', $columns_equals) . '
 			WHERE ' . implode(' AND ', $equals_wheres) . '
 		');
-
         $editar->execute($data);
 
         if($editar->rowCount()){

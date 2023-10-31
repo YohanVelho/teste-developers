@@ -7,6 +7,7 @@ use App\Models\Products;
 
 require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions.php');
+require_once(__DIR__.'/plugins/form/form.php');
 require_once(__DIR__.'/plugins/smarty/libs/Smarty.class.php');
 require_once(__DIR__.'/session.php');
 

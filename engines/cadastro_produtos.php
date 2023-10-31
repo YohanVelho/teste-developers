@@ -1,5 +1,7 @@
 <?php
 
+use form\form;
+
 $_TEMPLATE['TITLE'] = 'Cadastro de produtos';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
@@ -7,13 +9,6 @@ $_METATAGS = array(
 );
 
 $data = [];
-$product = [
-    'id' => 0,
-    'active' => 0,
-    'code' => '',
-    'name' => '',
-    'value' => 0,
-];
 
 if(!empty($_POST)){
     $data = $_POST;
@@ -32,9 +27,40 @@ if(isset($_GET['editar'])){
 
     if($id){
         $product = $productsTable->getProductById($id);
-        $checked = $product['active'] === 1 ? 'checked' : '';
-        $smarty->assign('checked', $checked);
     }
 }
 
-$smarty->assign('product', $product);
+$smarty->assign('product', $product ?? []);
+
+$form = new form();
+
+$form->addField('id',[
+    'type' => 'hidden',
+    'required' => true,
+]);
+$form->addField('code',[
+    'label' => 'Código',
+    'placeholder' => 'Código',
+    'type' => 'text',
+    'required' => true,
+]);
+$form->addField('category',[
+    'label' => 'Categoria',
+    'placeholder' => 'Categoria',
+    'type' => 'text',
+    'required' => true,
+]);
+$form->addField('name',[
+    'label' => 'Nome',
+    'placeholder' => 'Nome',
+    'type' => 'text',
+    'required' => true,
+]);
+$form->addField('value',[
+    'label' => 'Preço',
+    'placeholder' => 'Preço',
+    'type' => 'decimal',
+    'required' => true,
+]);
+
+$smarty->assign('form', $form);

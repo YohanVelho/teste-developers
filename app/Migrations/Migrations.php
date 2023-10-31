@@ -22,21 +22,15 @@ class Migrations{
 
             USE `$db`;
 
-            CREATE TABLE IF NOT EXISTS categories (
-                `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
-                `name` VARCHAR(190) NULL,
-                `created` DATETIME NULL,
-                `modified` DATETIME NULL);
-
             CREATE TABLE IF NOT EXISTS products (
                 `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
+                `active` TINYINT DEFAULT 1,
                 `code` VARCHAR(190) NULL,
+                `category` VARCHAR(190) NULL,
                 `name` VARCHAR(190) NULL,
                 `value` DECIMAL(10,2) NULL,
-                `category_id` BIGINT NULL,
                 `created` DATETIME NULL,
-                `modified` DATETIME NULL,
-                FOREIGN KEY (category_id) REFERENCES categories(id));
+                `modified` DATETIME NULL);
             ");
             
         } catch (\PDOException $e) {

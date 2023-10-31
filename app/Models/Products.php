@@ -11,20 +11,20 @@ class Products extends AppModel{
     }
     
     public function insertEditProduct(array $data = []){
-
         $data = [
             'id' => isset($data['id']) ? $data['id'] : null,
+            'active' => $data['active'],
             'code' => $data['code'],
             'name' => $data['name'],
             'value' => $data['value'],
-            'created' => dataToInsertDate(date('Y-m-d')),
-            'modified' => dataToInsertDate(date('Y-m-d')),
+            'created' => date('Y-m-d'),
+            'modified' => date('Y-m-d'),
         ];
 
         if($data['id']){
-            return $this->updateQuery('products', $data, $this->db);
+            return $this->updateQuery('products', $data, ['id' => $data['id']]);
         }else{
-            return $this->insertQuery('products', $data, $this->db);
+            return $this->insertQuery('products', $data);
         }
     }
 
