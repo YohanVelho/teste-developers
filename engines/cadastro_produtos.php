@@ -6,9 +6,8 @@ $_METATAGS = array(
     'nomedametatag' => '',
 );
 
-$data = $_POST;
-if($data){
-    $return = $productsTable->insertEditProduct($data); 
+if($_POST){
+    $return = $productsTable->insertEditProduct($_POST); 
 
     if($return){
         $smarty->assign('return_message', $return);

@@ -7,8 +7,7 @@ class AppModel
 
     public function __construct(
         public $db
-    )
-    {
+    ) {
     }
 
     public function insertQuery($table, $values)
@@ -29,9 +28,9 @@ class AppModel
 
         $inserir->execute($values);
 
-        if($this->db->lastInsertId()){
+        if ($this->db->lastInsertId()) {
             return 'Cadastrado com sucesso!';
-        }else{
+        } else {
             return 'Erro no cadastro!';
         }
     }
@@ -54,6 +53,7 @@ class AppModel
             $data[":{$column}_W"] = $value;
         }
 
+
         $editar = $this->db->prepare('
 			UPDATE ' . $table . ' SET 
 				' . implode(',', $columns_equals) . '
@@ -61,11 +61,7 @@ class AppModel
 		');
         $editar->execute($data);
 
-        if($editar->rowCount()){
-            return 'Editado com sucesso!';
-        }else{
-            return 'Erro ao editar!';
-        }
+        return 'Editado com sucesso!';
     }
 
     public function deleteQuery($table, $wheres)

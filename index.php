@@ -35,7 +35,6 @@ ini_set("error_log", "php-error.log");
 error_reporting(E_ALL);
 setlocale(LC_ALL, 'pt_BR');
 date_default_timezone_set('America/Sao_Paulo');
-// error_reporting(~E_DEPRECATED);
 
 // TRATAMENTO DE URL AMIGÁVEL
 if(isset($_GET['friendlyUrl'])){
