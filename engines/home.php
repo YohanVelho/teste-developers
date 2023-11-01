@@ -13,7 +13,7 @@
 use App\Connection;
 use App\Models\Products;
 
-$_TEMPLATE['TITLE'] = 'Home';
+$_TEMPLATE['TITLE'] = 'Home - Listagem de produtos';
 $_TEMPLATE['DESCRIPTION'] = '';
 $_METATAGS = array(
     'nomedametatag' => '',
@@ -27,4 +27,10 @@ if(isset($_GET['excluir'])){
     }
 }
 
-$smarty->assign('products', $productsTable->getProducts());
+$products = $productsTable->getProducts();
+foreach($products as $key => $product){
+    $products[$key]['active'] = $product['active'] == 1 ? 'Produto ativo' : 'Produto inativo';
+    $products[$key]['category'] = ucfirst( str_replace('-', ' ', $product['category'])) ?: '-';
+}
+
+$smarty->assign('products', $products);

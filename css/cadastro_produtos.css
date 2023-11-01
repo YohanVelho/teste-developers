@@ -29,3 +29,7 @@ body {
     border: 1px solid #c2c2c2;
     color: #474646;
 }
+
+#select-categoria{
+	padding: 5px;
+}

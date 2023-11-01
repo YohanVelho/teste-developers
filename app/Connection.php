@@ -14,12 +14,7 @@ class Connection {
         $this->host = "192.168.10.201";
         $this->root = "desenvolvimento";
         $this->root_password = "ellite";
-        $this->db = "teste_yohan_novo";
-
-        // $this->host = "localhost";
-        // $this->root = "root";
-        // $this->root_password = "";
-        // $this->db = "teste_yohan_novo";
+        $this->db = "teste_yohan";
     }
 
     public function getDbInfo(){

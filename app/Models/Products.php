@@ -16,6 +16,7 @@ class Products extends AppModel{
             'active' => $data['active'],
             'code' => $data['code'],
             'name' => $data['name'],
+            'category' => $data['category'],
             'value' => $data['value'],
             'created' => date('Y-m-d'),
             'modified' => date('Y-m-d'),
