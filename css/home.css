@@ -2,3 +2,25 @@ body{
 	text-align:center;
 	background:#eeeeee;
 }
+
+.products-table{
+	width: 53rem;
+	border: 2px solid black;
+	margin: 50px auto;
+}
+
+.products-table td{
+	border: 1px solid black;
+	margin: auto 0;
+	padding: 5px;
+}
+
+.products-table tr{
+	border: 1px solid black;
+	margin: auto 0;
+}
+.nenhum-encontrado{
+	padding: 10px;
+	margin: 20px 0px;
+	border: 1px solid black;
+}

@@ -1,0 +1,35 @@
+body {
+	text-align: center;
+	align-content: center;
+	background: #eeeeee;
+	width: 100%;
+}
+
+.form-div {
+	width: 960px;
+	margin: 20px auto;
+	padding: 5px;
+}
+
+.form-fields {
+	width: 25rem;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 10px auto;
+}
+
+.caixaInput {
+    float: left;
+    padding: 5px;
+    font-family: Trebuchet MS;
+    font-size: 13px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    color: #474646;
+}
+
+#select-categoria{
+	padding: 5px;
+}

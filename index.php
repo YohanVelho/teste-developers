@@ -1,8 +1,33 @@
 <?php
+
+use App\Migrations\Migrations;
+use App\Connection;
+use App\Models\AppModel;
+use App\Models\Products;
+
 require_once(__DIR__.'/config.php');
 require_once(__DIR__.'/functions.php');
+require_once(__DIR__.'/plugins/form/form.php');
 require_once(__DIR__.'/plugins/smarty/libs/Smarty.class.php');
 require_once(__DIR__.'/session.php');
+
+// conexão com o banco
+require_once(__DIR__.'/app/Connection.php');
+$pdo = new Connection();
+
+// migrations
+if($_SERVER['REQUEST_URI'] === '/migrate'){
+    require_once(__DIR__.'/app/Migrations/Migrations.php');
+    $migration = new Migrations();
+}
+
+//Models
+require_once(__DIR__.'/app/Models/AppModel.php');
+$appModel = new AppModel($pdo->getDb());
+
+require_once(__DIR__.'/app/Models/Products.php');
+$productsTable = new Products($pdo->getDb());
+
 ini_set('register_globals', 0);
 ini_set('display_errors', DISPLAY_ERRORS);
 ini_set("log_errors", 1);
@@ -34,6 +59,7 @@ $_METATAGS = Array(
     'keywords' => '',
 );
 
+$smarty = new Smarty();
 // ENGINE
 if(file_exists('engines/global.php')){
     include_once('engines/global.php');
@@ -51,7 +77,6 @@ $_TEMPLATE['URL_ENCODED'] = urlencode(urlencode(currentURL()));
 $_TEMPLATE['PAGE'] = $_PAGE;
 $_TEMPLATE['TITLE'] = (isset($TITLE))? $TITLE : $_TEMPLATE['TITLE'];
 $_TEMPLATE['METATAGS'] = (isset($_METATAGS))? $_METATAGS : false;
-$smarty = new Smarty();
 $smarty->template_dir = 'templates/';
 $smarty->compile_dir = 'templates/compiled/';
 $smarty->registerPlugin('modifier', 'seoText', 'generateSeoName');

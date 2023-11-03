@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{include 'Layouts/head.html'}
+
+<body>
+	{include 'Layouts/header.html'}
+
+	<div class="form-div">
+
+		<form action="?friendlyUrl=cadastro_produtos" name="productsForm" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+			<div class="form-fields">
+				<input type="hidden" name="id" id="id" value="{$product.id|default:''}" />
+				
+				<label for="active">Ativo:</label>
+				<input type="checkbox" id="active" name="active" value="1" {$activeChecked|default:'checked'}  />
+				
+				<select name="category" id="select-categoria">
+					<option value="0">Selecione uma categoria</option>
+					{foreach range(1 , 3) as $key => $category}
+						<option value="categoria-{$key + 1}" {if "categoria-{$key + 1}" eq $product.category|default:''} selected {/if} >Categoria {$key + 1}</option>
+					{/foreach}
+				</select> 
+
+				<label for="code">Código:</label>
+				<input type="text" id="code" name="code" value="{$product.code|default:''}"  />
+
+				<label for="name">Nome:</label>
+				<input type="text" id="name" name="name" value="{$product.name|default:''}"  />
+
+				<label for="value">Preço:</label>
+				<input type="number" step="0.01" id="value" name="value" value="{$product.value|default:''}"  />
+				<input type="submit" value="Salvar" />
+				{if isset($return_message)}
+					<h3>{$return_message}</h3>
+				{/if}
+			</div>
+		</form>
+
+	</div>
+
+	{include 'Layouts/footer.html'}
+</body>
+
+</html>

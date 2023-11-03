@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	{include 'head.html'}
-	<body>
-		<div>
-			<header>
-				<h1>home</h1>
-			</header>
-			<nav>
-				<p>
-					<a href="home">Home</a>
-				</p>
-				<p>
-					<a href="contato">Contato</a>
-				</p>
-			</nav>
-			<p>Bem vindo(a) ao website kickstart!</p>
-			<div>
+{include 'Layouts/head.html'}
 
-			</div>
+<body>
+  {include 'Layouts/header.html'}
+  <div>
+    {if isset($return_message)}
+    <h3>{$return_message}</h3>
+    {/if}
+    {if is_array($products) && count($products) > 0}
+    <table class="products-table">
+      <thead>
+        <tr>
+          <td>Código</td>
+          <td>Ativo</td>
+          <td>Nome</td>
+          <td>Categoria</td>
+          <td>Preço</td>
+          <td>Editar</td>
+          <td>Excluir</td>
+        </tr>
+      </thead>
+      {foreach $products as $key => $product}
+      <tbody>
+        <tr>
+          <td>{$product.code}</td>
+          <td>{$product.active}</td>
+          <td>{$product.name}</td>
+          <td>{$product.category}</td>
+          <td>{$product.value} R$</td>
+          <td><a href="?friendlyUrl=cadastro_produtos&editar={$product.id}">Editar</a></td>
+          <td><a href="?excluir={$product.id}">Excluír</a></td>
+        </tr>
+      </tbody>
+      {/foreach}
+    </table>
+    {else}
+    <div class="nenhum-encontrado">
+      <h4 class="">Nenhum produto cadastrado!</h4>
+    </div>
+    {/if}
+    {include 'Layouts/footer.html'}
+  </div>
+</body>
 
-			<footer>
-				<p>
-					&copy; Copyright  by RB Team
-				</p>
-			</footer>
-		</div>
-	</body>
 </html>
