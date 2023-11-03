@@ -12,6 +12,7 @@ if($_POST){
     if($return){
         $smarty->assign('return_message', $return);
     }
+    header("refresh:2;url=/?friendlyUrl=cadastro_produtos");
 }
 
 if(isset($_GET['editar']) && !empty($_GET['editar'])){

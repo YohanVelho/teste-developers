@@ -93,6 +93,8 @@ class AppModel
 		');
         $delete->execute($values);
 
-        return $delete->rowCount();
+        $delete->rowCount();
+
+        return 'Deletado com sucesso!';
     }
 }

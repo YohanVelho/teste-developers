@@ -23,12 +23,18 @@ if(isset($_GET['excluir'])){
     $id = $_GET['excluir'];
 
     if($id){
-        $product = $productsTable->deleteQuery('products', ['id' => $id]);
+        $return = $productsTable->deleteQuery('products', ['id' => $id]);
+        if($return){
+            $smarty->assign('return_message', $return);
+        }
     }
 }
 
 $products = $productsTable->getProducts();
 foreach($products as $key => $product){
+    /**
+     * Trata os campos active e category para exibir corretamente.
+     */
     $products[$key]['active'] = $product['active'] == 1 ? 'Produto ativo' : 'Produto inativo';
     $products[$key]['category'] = ucfirst( str_replace('-', ' ', $product['category'])) ?: '-';
 }

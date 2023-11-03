@@ -6,9 +6,7 @@
 	{include 'Layouts/header.html'}
 
 	<div class="form-div">
-		{if isset($return_message)}
-			<h3>{$return_message}</h3>
-		{/if}
+
 		<form action="?friendlyUrl=cadastro_produtos" name="productsForm" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
 			<div class="form-fields">
 				<input type="hidden" name="id" id="id" value="{$product.id|default:''}" />
@@ -32,6 +30,9 @@
 				<label for="value">Preço:</label>
 				<input type="number" step="0.01" id="value" name="value" value="{$product.value|default:''}"  />
 				<input type="submit" value="Salvar" />
+				{if isset($return_message)}
+					<h3>{$return_message}</h3>
+				{/if}
 			</div>
 		</form>
 

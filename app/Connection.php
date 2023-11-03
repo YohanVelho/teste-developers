@@ -14,7 +14,7 @@ class Connection {
         $this->host = "192.168.10.201";
         $this->root = "desenvolvimento";
         $this->root_password = "ellite";
-        $this->db = "teste_yohan";
+        $this->db = "teste_yohan_novo";
     }
 
     public function getDbInfo(){
@@ -36,9 +36,6 @@ class Connection {
                 [
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 ]
-                // 'mysql:host=127.0.0.1;dbname=teste_developers;charset=utf8',
-                // 'root',
-                // ""
             );
             return $connect;
         } catch (\PDOException $e) {
